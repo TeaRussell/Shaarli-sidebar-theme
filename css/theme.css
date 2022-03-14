@@ -1,0 +1,75 @@
+:root {
+	/*canonical vars, remove once done with testing*/
+  /*--main-color: RebeccaPurple;
+  --background-color: Lavender;
+  --dark-main-color: Black;*/
+  /*If I want to add my own vars, put'm here*/
+
+--semitransparent-border: rgba(0, 0, 0, 0.1);
+}
+
+#taglist {
+	/*border-color: var(--dark-main-color, blue);
+	border-width: 2px;
+	border-style: solid;*/
+	padding: 0px;
+	margin-top: 2.5em;
+	outline-style: solid;
+	outline-width: 3px;
+	outline-color: var(--semitransparent-border, blue);
+}
+
+.tagheading {
+	text-align: center;
+	padding: 0.2em;
+}
+
+.tagnumber {
+	margin: 0.1em;
+	margin-left: -0.2em;
+	margin-right: 0.2em;
+	display: inline-block;
+	min-width: 2em;
+	text-align: center;
+	color: var(--background-color, white);
+	font-size: 0.8em;
+	background-color: var(--main-color, blue);
+	border-radius: 7px;
+}
+
+.tagname {
+	margin-left: 0.4em;
+	word-wrap: break-word;
+	display: inline-block;
+	max-width: 10em;
+}
+
+li {
+	display: flex;
+	align-items:baseline;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0.5em;
+	padding-top: 0.5em;
+}
+
+.paging {
+	display: flex;
+}
+
+.linklist-filters, .linklist-pages, .linksperpage {
+	flex-grow: 1;
+	letter-spacing: normal;
+	align-self: center;
+}
+
+.linklist-item {
+	box-shadow: none;
+	outline-style: solid;
+	outline-width: 2px;
+	outline-color: var(--semitransparent-border, blue);
+	margin-top: 20px;
+}
