@@ -20,8 +20,21 @@
 }
 
 .tagheading {
-	text-align: center;
-	padding: 0.2em;
+	position: relative;
+	text-align: left;
+	padding: 0.2em 0.4em;
+}
+
+.tagheading a.tagsort {
+	position: absolute;
+	right: 0%;
+	display: inline-block;
+	width: 30%;
+	font-size: 0.6em;
+	text-align: right;
+	padding-right: 1em;
+	line-height: 2em;
+	color: #1a926c;
 }
 
 .tagnumber {

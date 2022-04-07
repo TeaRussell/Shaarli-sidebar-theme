@@ -327,12 +327,11 @@
 		<div id="taglist" class="linklist-item-infos">
 			<!--  linklist-item-title PLUS linklist-link makes it the same colour as the section headings-->
 			<!--  putting the latter in a span (rather than the former in a span or div) gives it the bg colour-->
-			<h3 class="linklist-item-title tagheading"><span class="linklist-link">Tags</span></h3>
+			<h3 class="linklist-item-title tagheading"><span class="linklist-link">Tags</span><a class="tagsort" href="#">Sort by usage</a></h3>
 		  <ul>
 			{loop="tags"}
-				<li><span class="tagnumber">{$value}</span><span class="tagname"><a href="?searchtags={$key|urlencode}">{$key}</a></span></li>
+				<li><a href="?searchtags={$key|urlencode}"><span class="tagnumber">{$value}</span><span class="tagname">{$key}</span></a></li>
 			{/loop}
-			<li></li>
 		  </ul>
 		</div>
 	</div>
@@ -340,5 +339,48 @@
 {include="page.footer"}
 <script src="{$asset_path}/js/thumbnails.min.js?v={$version_hash}#"></script>
 {if="$is_logged_in && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
+
+<script
+  src="{$asset_path}/js/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=">
+</script>
+<script type="text/javascript">
+<!--
+function sortAlpha(a, b) {
+    var compA = $(a).find('.tagname').text().toUpperCase();
+    var compB = $(b).find('.tagname').text().toUpperCase();
+    return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+}
+
+function sortUsage(a, b) {
+    var compA = $(a).find('.tagnumber').text();
+    var compB = $(b).find('.tagnumber').text();
+    return (compB - compA);
+}
+
+var byUsage = false;
+function sortTags( usage ) {
+  var $ul = $( '#taglist ul' );
+  var taglist = $ul.children( 'li' );
+  var sort_func = usage ? sortUsage : sortAlpha;
+  $.each( taglist.sort( sort_func ), function(idx, itm) {
+        $ul.append( itm );
+  });
+
+  $( '.tagsort' ).text( usage ? 'Sort by alpha' : 'Sort by usage' );
+
+  return;
+ }
+
+$( document ).ready( function() {
+    sortTags( byUsage );
+
+    $( '.tagsort' ).click( function() {
+        byUsage = !byUsage;
+        sortTags( byUsage );
+    });
+});
+// -->
+</script>
 </body>
 </html>
