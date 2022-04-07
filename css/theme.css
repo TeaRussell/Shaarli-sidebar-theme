@@ -34,16 +34,17 @@
 	text-align: right;
 	padding-right: 1em;
 	line-height: 2em;
-	color: #1a926c;
+	color: var(--main-color, blue);
 }
 
 .tagnumber {
 	margin: 0.1em;
 	margin-left: -0.2em;
 	margin-right: 0.2em;
+	padding: 0.1em 0.8em 0.1em 0.4em;
 	display: inline-block;
 	min-width: 2em;
-	text-align: center;
+	text-align: right;
 	color: var(--background-color, white);
 	font-size: 0.8em;
 	background-color: var(--main-color, blue);
@@ -55,6 +56,11 @@
 	word-wrap: break-word;
 	display: inline-block;
 	max-width: 10em;
+	line-height: 1.5em;
+}
+
+#taglist a:hover {
+	color: var(--main-color, blue);
 }
 
 li {
